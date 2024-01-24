@@ -48,10 +48,19 @@ This is one way to run your app — you can also run it directly from within And
 
 ## Step 3: Test Component
 
-Now that you have successfully run the app, let's test `EarthquakesCard Component`.
+Now that you have successfully run the app, let's test `EarthquakesCard Component` and `Dashboard Service`.
 
 1. Run `yarn test` or `npm test` to run the test written test cases
-2. To review test code check following file `src/components/EarthquakeCard/__test__/index.tsx`
+2. To review test code check following file `src/components/EarthquakeCard/__test__/index.test.tsx`
+3. To review test code under api call check following file `src/service/__test__/dashboardService.test.tsx`
+
+## Step 4: File Structure
+
+The following file structure has been followed under this project development
+1. The entry point component is `App.tsx` which exist in root directory of project.
+2. Inside the `App.tsx` the `RootNavigation.tsx` is initilizing which exist under the `src/navigation/RootNavigation.tsx`
+3. All the screens created under the following path `src/screens`
+4. All the api call files created under the following path `src/service`
 
 ## Congratulations! :tada:
 
