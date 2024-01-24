@@ -22,9 +22,6 @@ export const getEarthquakes = async () => {
       // Call the networkCall_GET function to make the API request
       const result = await networkCall_GET(endPoints.earthquakes, queryParams);
 
-      // Log the result to the console
-      console.log('Earthquakes result = ', result);
-
       // Resolve the promise with the fetched data
       resolve(result);
     } catch (error: any) {

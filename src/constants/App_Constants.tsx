@@ -1,8 +1,8 @@
 // Constants for the application
 export const AppConstants = {
   Dashboard: {
-    // Heading for the dashboard screen
-    heading: 'Earthquake Tracker',
+    heading: 'Earthquake Tracker', // Heading for the dashboard screen
+    noRecordFound: 'No Record Found', // Label for no record found
   },
 };
 

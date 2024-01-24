@@ -1,4 +1,4 @@
-import {Alert, FlatList, Text, View} from 'react-native';
+import {ActivityIndicator, Alert, FlatList, Text, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {AppConstants} from '../../constants/App_Constants';
 import {styles} from './style';
@@ -16,6 +16,9 @@ export default function Dashboard() {
   // State to hold earthquake data
   const [data, setData] = useState<[any]>();
 
+  // State to hold screen loading view
+  const [isLoading, setIsLoading] = useState(true);
+
   // Function to fetch earthquake data from the API
   const getEarthquakesData = async () => {
     try {
@@ -24,7 +27,11 @@ export default function Dashboard() {
 
       // Update state with the earthquake data or an empty array if not available
       setData(result?.earthquakes ?? []);
+
+      setIsLoading(false); // Update state to stop laoder
     } catch (error: any) {
+      setIsLoading(false); // Update state to stop laoder
+
       // Display an alert if there's an error fetching data
       Alert.alert(error.message);
     }
@@ -56,8 +63,23 @@ export default function Dashboard() {
         <Text style={styles.heading}>{AppConstants.Dashboard.heading}</Text>
       </View>
 
-      {/* Render a FlatList to display earthquake cards */}
-      <FlatList data={data} renderItem={renderCard} />
+      {/* Conditionally render content based on loading state and data availability */}
+      {isLoading ? (
+        // Display loading indicator if data is still being fetched
+        <View style={styles.contentView}>
+          <ActivityIndicator />
+        </View>
+      ) : data && data?.length > 0 ? (
+        // Display a FlatList if data is available
+        <FlatList data={data} renderItem={renderCard} />
+      ) : (
+        // Display a message if no records are found
+        <View style={styles.contentView}>
+          <Text style={styles.screenLabel}>
+            {AppConstants.Dashboard.noRecordFound}
+          </Text>
+        </View>
+      )}
     </View>
   );
 }

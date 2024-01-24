@@ -13,4 +13,12 @@ export const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 'bold',
   },
+  screenLabel: {
+    alignSelf: 'center',
+    color: appColors.black,
+    marginTop: '5%',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  contentView: {flex: 1, justifyContent: 'center'},
 });
